@@ -50,7 +50,7 @@ pipeline {
                    
             }
 
-            stage ('Trigger vpc') {
+            stage ('destroy vpc') {
             when {
                 expression { params.ACTION == 'destroy' }
             }
