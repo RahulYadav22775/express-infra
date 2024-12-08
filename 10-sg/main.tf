@@ -1,6 +1,6 @@
 module "mysql_sg" {
 
- source = https://github.com/RahulYadav22775/terraform-security-group.git
+ source = "git::https://github.com/RahulYadav22775/terraform-security-group.git?ref=main"
  project_name = var.project_name
  environment = var.environment
  common_tags = var.common_tags
