@@ -17,12 +17,28 @@ pipeline {
     stages {
         stage('init and plan') {
             steps{
-                 
                 withAWS(region: 'us-east-1', credentials: 'aws-creds'){
                     sh """
                         cd 00-vpc
                         terraform init -reconfigure 
                         terraform plan -out=tfplan
+                    """
+                }
+                   
+            }
+        }
+
+        stage('apply or destroy') {
+            steps{
+                withAWS(region: 'us-east-1', credentials: 'aws-creds'){
+                    sh """
+                        if [ ${param.ACTION} == 'action' ]
+                        then 
+                            terraform apply -auto-approve tfplan
+                        elif [ ${param.ACTION} == 'destroy' ]
+                        then
+                            terraform destroy -auto-aprove
+                        fi
                     """
                 }
                    
