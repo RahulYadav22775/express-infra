@@ -29,6 +29,11 @@ pipeline {
         }
 
         stage('apply or destroy') {
+
+            input{
+                message "should we continue to ? ${params.ACTION}"
+                ok "yes, we should"
+            }
             steps{
                 withAWS(region: 'us-east-1', credentials: 'aws-creds'){
                     sh """
@@ -38,7 +43,7 @@ pipeline {
                             terraform apply -auto-approve tfplan
                         elif [ ${params.ACTION} == 'destroy' ]
                         then
-                            terraform destroy -auto-aprove
+                            terraform destroy -auto-approve
                         fi
                     """
                 }
