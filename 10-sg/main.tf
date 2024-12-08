@@ -1,6 +1,6 @@
 module "mysql_sg" {
 
- source = "../../terraform-security-group"
+ source = https://github.com/RahulYadav22775/terraform-security-group.git
  project_name = var.project_name
  environment = var.environment
  common_tags = var.common_tags
@@ -13,7 +13,7 @@ module "mysql_sg" {
 
 module "bastion_sg" {
  
- source = "../../terraform-security-group"
+ source = "git::https://github.com/RahulYadav22775/terraform-security-group.git?ref=main"
  project_name = var.project_name
  environment = var.environment
  common_tags = var.common_tags
@@ -25,7 +25,7 @@ module "bastion_sg" {
 
 module "node_sg" {
  
- source = "../../terraform-security-group"
+ source = "git::https://github.com/RahulYadav22775/terraform-security-group.git?ref=main"
  project_name = var.project_name
  environment = var.environment
  common_tags = var.common_tags
@@ -38,7 +38,7 @@ module "node_sg" {
 
 module "eks_control_plane_sg" {
  
- source = "../../terraform-security-group"
+ source = "git::https://github.com/RahulYadav22775/terraform-security-group.git?ref=main"
  project_name = var.project_name
  environment = var.environment
  common_tags = var.common_tags
@@ -50,7 +50,7 @@ module "eks_control_plane_sg" {
 
 module "ingress_alb_sg" {
  
- source = "../../terraform-security-group"
+ source = "git::https://github.com/RahulYadav22775/terraform-security-group.git?ref=main"
  project_name = var.project_name
  environment = var.environment
  common_tags = var.common_tags
